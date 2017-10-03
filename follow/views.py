@@ -6,6 +6,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 import time
+from selenium.common.exceptions import NoSuchElementException
 
 
 
@@ -33,9 +34,14 @@ def auto_cheek(name,password):
 	password_el.send_keys(Keys.RETURN)
 
 	time.sleep(10)
-	error = browser.find_element_by_id('slfErrorAlert')
-	print(error.text)
-	return error.text
+	try:
+		error = browser.find_element_by_id('slfErrorAlert')
+	except NoSuchElementException:
+		error = None
+	if error != None:
+		return error.text
+	else:
+		return 'acces valider'
 
 
 
@@ -50,6 +56,8 @@ def acces(request):
 		if form.is_valid():
 			name = form.cleaned_data['username']
 			password = form.cleaned_data['password']
+			print(name)
+			print(password)
 			result = auto_cheek(name,password)
 			print(result)
 	else:
