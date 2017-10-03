@@ -23,8 +23,9 @@
               <div class="row">
                   <div class="col-xs-6">
                       <div class="well">
-                          <form id="loginForm" method="POST" action="/login/" novalidate="novalidate">
-                              <div class="form-group">
+                          <form id="loginForm" method="POST" action="" novalidate="novalidate">
+                            <!--
+                             <div class="form-group">
                                   <label for="username" class="control-label">Username</label>
                                   <input type="text" class="form-control" id="username" name="username" value="" required="" title="Please enter you username" placeholder="username">
                                   <span class="help-block"></span>
@@ -34,6 +35,10 @@
                                   <input type="password" class="form-control" id="password" name="password" value="" required="" title="Please enter your password" placeholder="password">
                                   <span class="help-block"></span>
                               </div>
+							-->
+   							{% csrf_token %}
+             				 {{ form.as_p }}
+
                               <div id="loginErrorMsg" class="alert alert-error hide">Wrong username og password</div>
                               <div class="checkbox">
                                   <label>
@@ -54,7 +59,6 @@
                           <li><span class="fa fa-check text-success"></span> Put your real password</li>
                           <li><a href="/read-more/"><u>Read more</u></a></li>
                       </ul>
-                      <p><a href="/new-customer/" class="btn btn-info btn-block">Yes please, register now!</a></p>
                   </div>
               </div>
           </div>
