@@ -6,4 +6,5 @@ app_name = "follow"
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
+    url(r'^acces/$', views.acces, name='acces'),
 ]
