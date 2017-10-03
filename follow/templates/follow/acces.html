@@ -8,7 +8,11 @@
 <script type="text/javascript" src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
+<style type="text/css">
+	#loginErrorMsg {
+		color: red;
+	}
+</style>
 
 <body>
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
@@ -38,8 +42,9 @@
 							-->
    							{% csrf_token %}
              				 {{ form.as_p }}
-
-                              <div id="loginErrorMsg" class="alert alert-error hide">Wrong username og password</div>
+             				  {% if  result  %}
+                              <div id="loginErrorMsg" class="alert alert-error">{{ result }}</div>
+                              {% endif %}
                               <div class="checkbox">
                                   <label>
                                       <input type="checkbox" name="remember" id="remember"> Remember login
