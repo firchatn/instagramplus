@@ -60,6 +60,9 @@ def acces(request):
 			print(password)
 			result = auto_cheek(name,password)
 			print(result)
+			if result == 'acces valider':
+				pass
+				#save login and password
 			return render(request, 'follow/acces.html', {'form' : form, 'result' : result})
 	else:
 		form = accesForm()
