@@ -10,10 +10,13 @@ from selenium.common.exceptions import NoSuchElementException
 
 
 
+
+browser = webdriver.PhantomJS("/home/firas/git/scripts-python/phantomjs-2.1.1-linux-x86_64/bin/phantomjs",  service_args=['--ignore-ssl-errors=true', '--ssl-protocol=any'])
+browser.set_window_size(1120, 550)
+
 def auto_cheek(name,password):
 
-	browser = webdriver.PhantomJS("/home/firas/git/scripts-python/phantomjs-2.1.1-linux-x86_64/bin/phantomjs",  service_args=['--ignore-ssl-errors=true', '--ssl-protocol=any'])
-	browser.set_window_size(1120, 550)
+	
 
 
 	browser.get('http://instagram.com')
@@ -44,6 +47,18 @@ def auto_cheek(name,password):
 		return 'acces valider'
 
 
+def get_detail():
+	time.sleep(5)
+	browser.find_element_by_xpath("//a[contains(@class, '_8scx2 _gvoze coreSpriteDesktopNavProfile')]").click()
+	time.sleep(10)
+	detail = browser.find_elements(By.XPATH, "//span[contains(@class, '_fd86t')]")
+	nb_post = detail[0].text
+	nb_follow = detail[1].text
+	nb_following = detail[2].text
+	print(nb_post,"posts")
+	print(nb_follow,"follower")
+	print(nb_following,"following")
+	time.sleep(5)
 
 
 
@@ -61,7 +76,7 @@ def acces(request):
 			result = auto_cheek(name,password)
 			print(result)
 			if result == 'acces valider':
-				pass
+				get_detail()
 				#save login and password
 			return render(request, 'follow/acces.html', {'form' : form, 'result' : result})
 	else:
