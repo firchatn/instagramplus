@@ -60,7 +60,8 @@ def get_detail():
 	print(nb_following,"following")
 	time.sleep(5)
 
-
+def follow():
+    pass
 
 def index(request):
 	return render(request,'follow/index.html')
