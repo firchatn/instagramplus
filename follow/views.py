@@ -15,9 +15,10 @@ browser = webdriver.PhantomJS("/home/firas/git/scripts-python/phantomjs-2.1.1-li
 browser.set_window_size(1120, 550)
 
 def auto_cheek(name,password):
-
-	
-
+        """ login cheek
+        if succes return acces valider
+        else return login error from instagram web site
+        """
 
 	browser.get('http://instagram.com')
 
